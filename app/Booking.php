@@ -12,4 +12,9 @@ class Booking extends Model
     {
         return $this->belongsTo(Ride::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

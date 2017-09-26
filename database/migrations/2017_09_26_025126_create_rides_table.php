@@ -15,7 +15,22 @@ class CreateRidesTable extends Migration
     {
         Schema::create('rides', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('origin');
+            $table->string('destination');
+            $table->integer('capacity')->unsigned();
+            $table->integer('driver_id')->unsigned();
+            $table->integer('state_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('driver_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+
+            $table->foreign('state_id')
+                ->references('id')
+                ->on('states')
+                ->onDelete('cascade');
         });
     }
 
