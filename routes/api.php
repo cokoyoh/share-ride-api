@@ -31,6 +31,10 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'] ,function (){
 
 });
 
+Route::group(['prefix' => 'v1', 'middleware' => 'api'], function() {
+    Route::get('get-available-rides','RideController@getAvailableRides');
+});
+
 
 /**
  * Password reset routes
