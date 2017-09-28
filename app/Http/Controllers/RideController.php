@@ -18,4 +18,5 @@ class RideController extends Controller
         $available_rides = Ride::with('state')->where('state_id','=',1)->get();
         return response(['data'=> $available_rides],200);
     }
+
 }
