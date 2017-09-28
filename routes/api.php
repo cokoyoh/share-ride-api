@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('user', function (Request $request) {
-    return $request->user()->with('roles')->first();
+    $user = User::where('email','=', $request->user()->email)->get();
+    return response(['data' => $user],200);
 });
 
 Route::get('test', function(){
@@ -33,6 +35,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'] ,function (){
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => 'api'], function() {
+    Route::post('create-user','UserController@createUser');
     Route::get('get-available-rides','RideController@getAvailableRides');
 });
 

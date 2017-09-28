@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ride;
 use Illuminate\Http\Request;
+use Vinkla\Pusher\Facades\Pusher as LaravelPusher;
 
 class RideController extends Controller
 {
@@ -33,7 +34,6 @@ class RideController extends Controller
             'driver_id' =>  $driver_id,
             'state_id' => 1
         ]);
-
         return response(['message' => 'You have successfully added a ride.'],200);
     }
 
