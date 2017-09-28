@@ -22,7 +22,7 @@ class BookingController extends Controller
         $ride->state_id = 2;
         $ride->save();
 
-        return response(['message' => 'You have successfully booked a ride. Than you.']);
+        return response(['message' => 'You have successfully booked a ride. Than you.'],200);
         /**
          * Send confirmation email here
          */

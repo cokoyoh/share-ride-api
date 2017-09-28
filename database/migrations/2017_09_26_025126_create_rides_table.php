@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,6 +21,7 @@ class CreateRidesTable extends Migration
             $table->integer('capacity')->unsigned();
             $table->integer('driver_id')->unsigned();
             $table->integer('state_id')->unsigned();
+            $table->date('dor')->default(Carbon::now());
             $table->timestamps();
 
             $table->foreign('driver_id')

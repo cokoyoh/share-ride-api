@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ride extends Model
 {
-    protected $fillable = ['origin','destination','capacity', 'driver_id', 'state_id'];
+    protected $fillable = ['origin','destination','capacity', 'driver_id', 'state_id', 'dor'];
 
     public function user()
     {

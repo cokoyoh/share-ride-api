@@ -29,6 +29,7 @@ Route::get('test', function(){
 
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'] ,function (){
     Route::post('book-ride','BookingController@bookRide');
+    Route::post('add-ride', 'RideController@addRide');
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => 'api'], function() {
