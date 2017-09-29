@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Mail\RideConfirmationMail;
 use App\Ride;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -22,9 +24,13 @@ class BookingController extends Controller
         $ride->state_id = 2;
         $ride->save();
 
-        return response(['message' => 'You have successfully booked a ride. Than you.'],200);
         /**
          * Send confirmation email here
          */
+
+        $user = $request->user();
+        Mail::to($user->email)->send(new RideConfirmationMail($ride,$user));
+
+        return response(['message' => 'You have successfully booked a ride. Thank you.'],200);
     }
 }
